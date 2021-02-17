@@ -3,6 +3,8 @@
         <span class="material-icons">
 theaters
 </span>
-      <span>App Peliculas</span>
+      <span [routerLink]="['/principal']">App Peliculas</span>
       <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" routerLink="/peliculasList" routerLinkActive="mat-accent">Peliculas</button>
+      <button mat-raised-button color="primary">Series</button>
 </mat-toolbar-row>

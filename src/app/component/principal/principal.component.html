@@ -5,10 +5,6 @@
     </div>
     <h2>Series recientes</h2>
     <div class="series">
-        <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ seriesData[0].poster_path }}" alt="">
-        <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ seriesData[1].poster_path }}" alt="">
-        <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ seriesData[2].poster_path }}" alt="">
-        <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ seriesData[3].poster_path }}" alt="">
-        <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ seriesData[4].poster_path }}" alt="">
+        <img class='image' *ngFor="let serie of seriesData" src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ serie.poster_path }}" alt="">
     </div>
 </div>
