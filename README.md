@@ -1,6 +1,6 @@
 # PeliculasApp
 
-Código correspondiente a la sesión VIII - Módulo de Aplicaciones Web lado cliente. 
+Código correspondiente a la sesión IX - Módulo de Aplicaciones Web lado cliente. 
 Usar `npm install` para instalar todas las dependencias una vez descargado este proyecto.
 
 ## Development server
