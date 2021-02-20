@@ -1,0 +1,13 @@
+<div class='principal'>
+    <h2>Peliculas recientes</h2>
+    <mat-progress-bar mode="indeterminate" *ngIf="peliculasData.length === 0 "></mat-progress-bar>
+    <div class="peliculas">
+        <button *ngFor="let pelicula of peliculasData" routerLink="/pelicula" (click)="sendParams(pelicula.id, pelicula.title)">
+            <img class='image' src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ pelicula.poster_path }}" alt="">
+        </button>
+    </div>
+    <h2>Series recientes</h2>
+    <div class="series">
+        <img class='image' *ngFor="let serie of seriesData" src="https://image.tmdb.org/t/p/w220_and_h330_face/{{ serie.poster_path }}" alt="">
+    </div>
+</div>
