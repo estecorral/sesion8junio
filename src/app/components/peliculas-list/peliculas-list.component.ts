@@ -14,7 +14,11 @@ export class PeliculasListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.peliculasData = this.peliculasService.peliculasTotal;
+    this.peliculasService.getTopRated().subscribe((data:any) => {
+      this.peliculasData = data;
+    }), (error: any) => {
+      console.log(error);
+    };
   }
 
   sendParams(id, titulo) {

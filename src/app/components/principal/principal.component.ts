@@ -16,7 +16,10 @@ export class PrincipalComponent implements OnInit {
   constructor(private router: Router, private peliculasService: PeliculasService) { }
 
   ngOnInit() {
-    this.peliculasData = this.peliculasService.getPolular();
+    this.peliculasService.getPolular().subscribe( (data: any) => {
+      this.peliculasData = data;
+      console.log(data);
+    });
   }
 
   sendParams(id, titulo) {

@@ -10,6 +10,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { PeliculasService } from "./services/peliculas.service";
+import { HttpClientModule } from '@angular/common/http';
+import { PuntuacionComponent } from './components/puntuacion/puntuacion.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { PeliculasService } from "./services/peliculas.service";
     NavbarComponent,
     PrincipalComponent,
     PeliculasListComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    PuntuacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
     PeliculasService
