@@ -10,12 +10,16 @@ import { PeliculasService } from "../../services/peliculas.service";
 export class PeliculasListComponent implements OnInit {
   peliculasData: any;
   ordenado = false;
+  loading: boolean = true;
+  actualPage: number = 0;
   constructor(private router: Router, private peliculasService: PeliculasService) { 
   }
 
   ngOnInit() {
     this.peliculasService.getTopRated().subscribe((data:any) => {
-      this.peliculasData = data;
+      this.peliculasData = data.results;
+      this.actualPage = data.page;
+      this.loading = false;
     }), (error: any) => {
       console.log(error);
     };
@@ -33,5 +37,12 @@ export class PeliculasListComponent implements OnInit {
       this.peliculasData = this.peliculasService.peliculasTotal;
       this.ordenado = false;
     }
+  }
+
+  cargaMas() {
+    this.actualPage += 1;
+    this.peliculasService.getTopRated(this.actualPage).subscribe((data: any) => {
+     this.peliculasData = this.peliculasData.concat(data);
+    });
   }
 }

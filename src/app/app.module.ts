@@ -12,6 +12,8 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { PeliculasService } from "./services/peliculas.service";
 import { HttpClientModule } from '@angular/common/http';
 import { PuntuacionComponent } from './components/puntuacion/puntuacion.component';
+import { FormsModule } from "@angular/forms";
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { PuntuacionComponent } from './components/puntuacion/puntuacion.componen
     PrincipalComponent,
     PeliculasListComponent,
     PeliculaComponent,
-    PuntuacionComponent
+    PuntuacionComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     PeliculasService

@@ -23,11 +23,18 @@ export class PeliculasService {
     }));
   }
 
-  getTopRated() {
-    const url = `${this.apiURL}top_rated?${environment.apiKey}&language=${this.language}`;
-    return this.httpClient.get(url).pipe(map((data:any) => {
-      return data.results;
-    }));
+  getTopRated(page?) {
+    if(page) {
+      const url = `${this.apiURL}top_rated?${environment.apiKey}&language=${this.language}&page=${page}`;
+      return this.httpClient.get(url).pipe(
+        map((data: any) => {
+          return data.results;
+        })
+      );
+    } else {
+      const url = `${this.apiURL}top_rated?${environment.apiKey}&language=${this.language}`;
+      return this.httpClient.get(url);
+    }
   }
 
   getMoviesPopularity() {
@@ -53,5 +60,10 @@ export class PeliculasService {
       map((res:any) => {
       return res.cast;
     }));
+  }
+
+  searchMovie(query: string) {
+    const url = `https://api.themoviedb.org/3/search/movie?${environment.apiKey}&language=${this.language}&query=${query}`;
+    return this.httpClient.get(url);
   }
 }

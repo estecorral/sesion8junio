@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from "@angular/router";
 import { PeliculasService } from "../../services/peliculas.service";
 
@@ -12,10 +13,12 @@ export class PeliculaComponent implements OnInit {
   titulo = '';
   pelicula: any = {};
   urlFondo: string;
+  urlPoster: string;
   credits: any = {};
+  loading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    private peliculasService: PeliculasService) { }
+  constructor(private route: ActivatedRoute,
+    private peliculasService: PeliculasService, private snackBar: MatSnackBar) { }
   
   ngOnInit() {
     this.route.queryParams.subscribe((params: any) => {
@@ -28,6 +31,10 @@ export class PeliculaComponent implements OnInit {
           this.urlFondo =
             "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces" +
             this.pelicula.backdrop_path;
+          this.urlPoster =
+            "https://image.tmdb.org/t/p/w220_and_h330_face" +
+            this.pelicula.poster_path;
+
             console.log(this.pelicula);
         }),
         (error: any) => {
@@ -35,8 +42,14 @@ export class PeliculaComponent implements OnInit {
         };
         this.peliculasService.getCredits(this.idPelicula).subscribe((data:any) => {
           this.credits = data;
-          console.log(data);
+          this.loading = false;
         });
+    });
+
+  }
+  userPuntuation(event) {
+    this.snackBar.open('El usuario ha puntuado con: ' + event, 'close', {
+      duration: 3000,
     });
   }
 

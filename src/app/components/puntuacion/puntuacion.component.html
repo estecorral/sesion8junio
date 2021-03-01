@@ -1,16 +1,17 @@
 <div class="estrellas">
-    <i class="material-icons" *ngIf="puntuacion < 2">star_outline</i>
-    <i class="material-icons" *ngIf="puntuacion >= 2">star</i>
+    Componente Hijo:
+    <i class="material-icons" *ngIf="puntuacion < 2" (click)="sendPuntuation(2)">star_outline</i>
+    <i class="material-icons" *ngIf="puntuacion >= 2" (click)="sendPuntuation(2)">star</i>
 
-    <i class="material-icons" *ngIf="puntuacion < 4">star_outline</i>
-    <i class="material-icons" *ngIf="puntuacion >= 4">star</i>
+    <i class="material-icons" *ngIf="puntuacion < 4" (click)="sendPuntuation(4)">star_outline</i>
+    <i class="material-icons" *ngIf="puntuacion >= 4" (click)="sendPuntuation(4)">star</i>
 
-    <i class="material-icons" *ngIf="puntuacion < 6">star_outline</i>
-    <i class="material-icons" *ngIf="puntuacion >= 6">star</i>
+    <i class="material-icons" *ngIf="puntuacion < 6" (click)="sendPuntuation(6)">star_outline</i>
+    <i class="material-icons" *ngIf="puntuacion >= 6" (click)="sendPuntuation(6)">star</i>
 
-    <i class="material-icons" *ngIf="puntuacion < 8">star_outline</i>
-    <i class="material-icons" *ngIf="puntuacion >= 8">star</i>
+    <i class="material-icons" *ngIf="puntuacion < 8" (click)="sendPuntuation(8)">star_outline</i>
+    <i class="material-icons" *ngIf="puntuacion >= 8" (click)="sendPuntuation(8)">star</i>
 
-    <i class="material-icons" *ngIf="puntuacion < 10">star_outline</i>
-    <i class="material-icons" *ngIf="puntuacion === 10">star</i>
+    <i class="material-icons" *ngIf="puntuacion < 10" (click)="sendPuntuation(10)">star_outline</i>
+    <i class="material-icons" *ngIf="puntuacion === 10" (click)="sendPuntuation(10)">star</i>
 </div>
