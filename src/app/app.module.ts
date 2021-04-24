@@ -12,8 +12,10 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { PeliculasService } from "./services/peliculas.service";
 import { HttpClientModule } from '@angular/common/http';
 import { PuntuacionComponent } from './components/puntuacion/puntuacion.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { RegistroTemplateComponent } from './components/registro-template/registro-template.component';
+import { RegistroReactivoComponent } from './components/registro-reactivo/registro-reactivo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     PeliculasListComponent,
     PeliculaComponent,
     PuntuacionComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    RegistroTemplateComponent,
+    RegistroReactivoComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     PeliculasService

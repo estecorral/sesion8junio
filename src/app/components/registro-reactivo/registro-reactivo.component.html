@@ -1,0 +1,78 @@
+<div class="body">
+    <h1>Formulario reactivo</h1>
+    <button mat-raised-button color="secondary" (click)="resetForm()">Limpiar</button>
+    <form [formGroup]="formularioRegistro" (ngSubmit)="sendForm()">
+  
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input type="text" 
+            placeholder="nombre"
+            formControlName="nombre" matInput>
+            <mat-error>El campo nombre no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Apellidos</mat-label>
+            <input matInput
+            type="text"
+            placeholder="apellidos"
+            formControlName="apellidos">
+            <mat-error>El campo apellidos no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput
+            type="email"
+            placeholder="ex. email@example.com"
+            formControlName="email">
+            <mat-error>El campo email no es válido</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input matInput
+            type="text"
+            placeholder="ex. 999999999"
+            formControlName="telefono">
+            <mat-error>El campo teléfono no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Pais</mat-label>
+            <mat-select formControlName="pais">
+                <mat-option *ngFor="let pais of paises" [value]="pais.nombre">{{ pais.nombre }}</mat-option>
+            </mat-select>
+            <mat-error>El campo país no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="ciudad">
+                <mat-option value="Ponferrada">Ponferrada</mat-option>
+                <mat-option value="Leon">León</mat-option>
+                <mat-option value="Astorga">Astorga</mat-option>
+                <mat-option value="Bembibre">Bembibre</mat-option>
+            </mat-select>
+            <mat-error>El campo ciudad no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker"
+            type="text"
+            formControlName="nacimiento">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>El campo fecha de nacimento es obligatorio</mat-error>
+        </mat-form-field>
+
+        <mat-radio-group formControlName="genero">
+            <mat-label>Género: </mat-label>
+            <mat-radio-button value="M">Masculino </mat-radio-button>
+            <mat-radio-button value="F">Femenino</mat-radio-button>
+            <mat-error>Seleccione un género</mat-error>
+        </mat-radio-group>
+        <button mat-raised-button color="primary" type="submit">Registrar</button>
+    </form>
+</div>
