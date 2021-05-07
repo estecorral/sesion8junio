@@ -1,0 +1,26 @@
+<div class="body">
+    <h1>Confirmar datos registro</h1>
+    <mat-list>
+        <mat-list-item>Nombre: {{ dataRegistro.nombre }} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Apellido: {{  dataRegistro.apellidos }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Email: {{  dataRegistro.email }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Teléfono: {{  dataRegistro.telefono }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>País: {{  dataRegistro.pais }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Ciudad: {{  dataRegistro.ciudad }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Calle: {{  dataRegistro.direccion.calle }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Número: {{  dataRegistro.direccion.numero }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Fecha Nacimiento: {{  dataRegistro.nacimiento | date: "dd/MM/yyyy" }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Género: {{  dataRegistro.genero }}</mat-list-item>
+    </mat-list>
+    <button mat-raised-button (click)="sendData()" color="primary">Confirmar</button>
+    <button mat-raised-button color="secondary" (click)="editar()">Editar</button>
+</div>

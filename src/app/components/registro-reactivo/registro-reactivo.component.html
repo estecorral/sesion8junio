@@ -1,8 +1,6 @@
-<div class="body">
+<div class="body" *ngIf="verForm">
     <h1>Formulario reactivo</h1>
-    <button mat-raised-button color="secondary" (click)="resetForm()">Limpiar</button>
     <form [formGroup]="formularioRegistro" (ngSubmit)="sendForm()">
-  
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
             <input type="text" 
@@ -27,6 +25,7 @@
             placeholder="ex. email@example.com"
             formControlName="email">
             <mat-error>El campo email no es válido</mat-error>
+            <mat-icon matSuffix>alternate_email</mat-icon>
         </mat-form-field>
         
         <mat-form-field appearance="outline">
@@ -36,6 +35,7 @@
             placeholder="ex. 999999999"
             formControlName="telefono">
             <mat-error>El campo teléfono no es válido</mat-error>
+            <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -57,6 +57,24 @@
             <mat-error>El campo ciudad no es válido</mat-error>
         </mat-form-field>
 
+        <div formGroupName="direccion">
+            <mat-form-field appearance="outline">
+                <mat-label>Calle</mat-label>
+                <input matInput
+                type="text"
+                placeholder="C/ Nombre calle"
+                formControlName="calle">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Número</mat-label>
+                <input matInput
+                type="number"
+                formControlName="numero">
+            </mat-form-field>
+        </div>
+        
+
         <mat-form-field appearance="outline">
             <mat-label>Fecha nacimiento</mat-label>
             <input matInput [matDatepicker]="picker"
@@ -69,10 +87,37 @@
 
         <mat-radio-group formControlName="genero">
             <mat-label>Género: </mat-label>
-            <mat-radio-button value="M">Masculino </mat-radio-button>
-            <mat-radio-button value="F">Femenino</mat-radio-button>
+            <mat-radio-button value="Masculino">Masculino </mat-radio-button>
+            <mat-radio-button value="Femenino">Femenino</mat-radio-button>
             <mat-error>Seleccione un género</mat-error>
         </mat-radio-group>
         <button mat-raised-button color="primary" type="submit">Registrar</button>
+        <button mat-raised-button color="secondary" (click)="resetForm()" type="button">Limpiar</button>
     </form>
+</div>
+<div class="body" *ngIf="!verForm">
+    <h1>Confirme datos formulario</h1>
+    <mat-list>
+        <mat-list-item>Nombre: {{ registro.nombre }} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Apellido: {{ registro.apellidos }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Email: {{ registro.email }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Teléfono: {{ registro.telefono }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>País: {{ registro.pais }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Ciudad: {{ registro.ciudad }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Calle: {{ registro.direccion.calle }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Número: {{ registro.direccion.numero }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Fecha Nacimiento: {{ registro.nacimiento | date: "dd/MM/yyyy" }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Género: {{ registro.genero }}</mat-list-item>
+    </mat-list>
+    <button mat-raised-button (click)="sendData()" color="primary">Confirmar</button>
+    <button mat-raised-button color="secondary" (click)="editar()">Editar</button>
 </div>
