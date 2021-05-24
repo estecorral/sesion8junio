@@ -18,6 +18,7 @@ import { RegistroTemplateComponent } from './components/registro-template/regist
 import { RegistroReactivoComponent } from './components/registro-reactivo/registro-reactivo.component';
 import { RegistroConfirmarComponent } from './components/registro-confirmar/registro-confirmar.component';
 import { RegistrarService } from "./services/registrar.service";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RegistrarService } from "./services/registrar.service";
     BuscadorComponent,
     RegistroTemplateComponent,
     RegistroReactivoComponent,
-    RegistroConfirmarComponent
+    RegistroConfirmarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

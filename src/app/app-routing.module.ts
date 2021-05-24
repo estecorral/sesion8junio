@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { LoginComponent } from './components/login/login.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
 import { PrincipalComponent } from './components/principal/principal.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroTemplateComponent },
   { path: 'registroreactivo', component: RegistroReactivoComponent},
   { path: 'registroconfirmar', component: RegistroConfirmarComponent},
+  { path: 'login', component: LoginComponent},
   { path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

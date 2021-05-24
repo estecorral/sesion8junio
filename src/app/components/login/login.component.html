@@ -1,0 +1,22 @@
+<div class="body">
+    <h1>Login</h1>
+    <form [formGroup]="formularioLogin" (ngSubmit)="sendForm()">
+        <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input type="text" 
+            formControlName="usuario"
+            matInput>
+            <mat-error>El campo usuario no es válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" 
+            formControlName="password"
+            matInput>
+            <mat-error>El campo password no es válido</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+</div>

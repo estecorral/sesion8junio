@@ -7,6 +7,9 @@
             <button mat-raised-button color="primary" routerLink="/peliculasList" routerLinkActive="mat-accent">Peliculas</button>
             <button mat-raised-button color="primary">Series</button>
         </div>
+        <div>
+            Bienvenido: {{ user.name }}
+        </div>
         <div class="search">
             <mat-form-field class="example-form-field">
                 <input matInput type="text" [(ngModel)]="value">
@@ -16,6 +19,8 @@
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="buscar()">Buscar</button>
             <button mat-raised-button color="secondary" routerLink="/registro" routerLinkActive="mat-accent">Registro</button>
-            <button mat-raised-button color="secondary" routerLink="/registroreactivo" routerLinkActive="mat-accent">RegistroR</button> 
+            <button mat-raised-button color="secondary" routerLink="/registroreactivo" routerLinkActive="mat-accent">RegistroR</button>
+            <button mat-raised-button color="secondary" routerLink="/login" routerLinkActive="mat-accent">Login</button>
+            <button mat-raised-button color="secondary" (click)="logOut()">LogOut</button>
         </div>
 </mat-toolbar-row>
