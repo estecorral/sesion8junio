@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { LoginService } from "../../services/login.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +12,7 @@ import { LoginService } from "../../services/login.service";
 export class LoginComponent implements OnInit {
   formularioLogin: FormGroup;
   constructor( private formBuilder: FormBuilder, private loginService: LoginService,
-    private router: Router) { 
+    private router: Router, private snackBar: MatSnackBar) { 
     this.initForm();
   }
 
@@ -28,8 +30,28 @@ export class LoginComponent implements OnInit {
     if(this.formularioLogin.status === "INVALID") {
       return;
     }
-    // console.log(this.formularioLogin.value);
-    this.loginService.login(this.formularioLogin.value);
+    const user = {
+      name: this.formularioLogin.value.usuario,
+    }
+    this.loginService.getToken().subscribe((res: any) => {
+      if(res.success) {
+        this.loginService.login(this.formularioLogin.value, res.request_token).subscribe((res: any) => {
+          if (res.success) {
+            this.loginService.getSessionId(res.request_token).subscribe((res: any) => {
+              if(res.success) {
+                localStorage.setItem("userData", JSON.stringify(user));
+                localStorage.setItem("session_Id", res.session_id);
+              }
+            });
+          } else {
+            this.snackBar.open('Usuario y/o contraseña incorrectos');
+            return;
+          }
+        });
+      } else {
+        console.log('ERROR');
+      }
+    });
     this.router.navigate(['']);
   }
 }
