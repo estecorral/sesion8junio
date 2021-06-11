@@ -41,17 +41,18 @@ export class LoginComponent implements OnInit {
               if(res.success) {
                 localStorage.setItem("userData", JSON.stringify(user));
                 localStorage.setItem("session_Id", res.session_id);
+                this.loginService.logged.next(true);
+                this.router.navigate([""]);
               }
             });
-          } else {
-            this.snackBar.open('Usuario y/o contraseña incorrectos');
-            return;
           }
+        }, (error) => {
+          console.log(error);
+          this.snackBar.open(error.error.status_message, 'Cerrar', { duration: 3000 });
         });
       } else {
         console.log('ERROR');
       }
     });
-    this.router.navigate(['']);
   }
 }

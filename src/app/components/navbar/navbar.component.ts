@@ -13,11 +13,23 @@ export class NavbarComponent implements OnInit {
     email: '',
     sessionId: ''
   };
+  isLogged = false;
   constructor(private route: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem("userData"));
-    console.log(this.user);
+    if(localStorage.getItem('session_Id')) {
+      this.loginService.logged.next(true);
+      this.isLogged = true;
+      this.user = JSON.parse(localStorage.getItem("userData"));
+    }
+    this.loginService.logged.subscribe(res => {
+      if(res) {
+        this.user = JSON.parse(localStorage.getItem('userData'));
+        this.isLogged = true;
+      } else {
+        this.isLogged = false;
+      }
+    });
   }
 
   buscar() {

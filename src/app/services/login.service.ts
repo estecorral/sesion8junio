@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from "@angular/common/http";
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: "root",
 })
 export class LoginService {
   apiURL = "https://api.themoviedb.org/3/authentication/";
+  logged = new Subject();
 
   constructor(private httpClient: HttpClient ) {}
 
@@ -31,5 +33,6 @@ export class LoginService {
 
   logout() {
     localStorage.clear();
+    this.logged.next(false);
   }
 }
